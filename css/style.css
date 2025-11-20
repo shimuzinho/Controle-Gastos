@@ -11,14 +11,23 @@
 .opcao-categoria {
     width: 20%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.container-icone {
+.opcao-categoria input {
+    display: none;
+}
+
+.opcao-categoria input:checked + svg { 
+    transform: scale(1.5);
+}
+
+.icone {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--cor-secundaria);
-    border-radius: 120px;
-    width: 120px;
-    height: 120px;
+    height: 82px;
+    width: auto;
 }
