@@ -52,12 +52,12 @@ buttonAbrirCamera.addEventListener('click', () => {
 
 buttonTirarFoto.addEventListener('click', () => {
     cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.heigth = cameraView.videoHeigth;
+    cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext('2d').drawImage(cameraView, 0, 0);
     const dataURL = cameraSensor.toDataURL('images/webp');
     cameraOutput.src = dataURL;
     previewMode();
-    
+
     localStorage.setItem('image', dataURL);
 
     alert('Foto salva!');
