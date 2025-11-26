@@ -107,7 +107,7 @@ const mostrarDespezas = async () => {
                     </div>
                 </div>
                 <div class="linha-divisoria"></div>
-                <img src=${URL.createObjectURL(el.foto)}>
+            <img src="${el.foto}">
         `).join('');
     } else {
         document.querySelector('.container-movimentacoes').innerHTML = ''; 

@@ -57,19 +57,8 @@ buttonTirarFoto.addEventListener('click', () => {
     const dataURL = cameraSensor.toDataURL('images/webp');
     cameraOutput.src = dataURL;
     previewMode();
-    const arr = dataURL.split(',');
-    const mime = arr[0].match(/:(.*?);/)[1];
-    const bstr = atob(arr[1]);
-    let len = bstr.length;
-    const u8arr = new Uint8Array(len);
     
-    while (len--) {
-        u8arr[len] = bstr.charCodeAt(len);
-    }
-    
-    const blob = new Blob([u8arr], { type: mime });
-    
-    localStorage.setItem('image', blob);
+    localStorage.setItem('image', dataURL);
 
     alert('Foto salva!');
 });
