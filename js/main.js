@@ -10,24 +10,46 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-let contrains = { video: { facingMode: 'user' }, audio: false };
-
+const buttonAbrirCamera = document.getElementById('buttonAbrirCamera');
+const buttonFecharCamera = document.getElementById('buttonFecharCamera');
+const buttonTirarFoto = document.getElementById('buttonTirarFoto');
+const containerCamera = document.getElementById('containerCamera');
 const cameraView = document.getElementById('cameraView');
 const cameraOutput = document.getElementById('cameraOutput');
 const cameraSensor = document.getElementById('cameraSensor');
-const cameraTrigger = document.getElementById('cameraTrigger');
 
-const cameraStart = () => {
+let contrains = { video: { facingMode: 'user' }, audio: false };
+
+const previewMode = () => {
+    cameraView.style.display = 'none';
+    buttonTirarFoto.style.display = 'none';
+    cameraOutput.style.display = 'block';
+}
+
+buttonAbrirCamera.addEventListener('click', () => {
+    containerCamera.style.display = 'flex';
     navigator.mediaDevices
-    .getUserMedia(contrains)
-    .then(stream => {
-        stream.getTracks[0];
-        cameraView.srcObject = stream;
-    })
-    .catch(err => {
-        console.error('Ocorreu um erro: ' + err);
-    });
-};
+        .getUserMedia(contrains)
+        .then(stream => {
+            stream.getTrack[1];
+            cameraView.srcObject = stream;
+        })
+        .catch(err => {
+            console.error(err);
+        });
+});
+
+buttonTirarFoto.addEventListener('click', () => {
+    cameraSensor.width = cameraView.videoWidth;
+    cameraSensor.heigth = cameraView.videoHeigth;
+    cameraSensor.getContext('2d').drawImage(cameraView, 0, 0);
+    cameraOutput.src = cameraSensor.toDataURL('images/webp');
+    cameraOutput.classList.add('taken');
+})
+
+buttonFecharCamera.addEventListener('click', () => {
+    containerCamera.style.display = 'none';
+});
 
 cameraTrigger.addEventListener('click', () => {
     cameraSensor.width = cameraView.videoWidth;
@@ -36,5 +58,3 @@ cameraTrigger.addEventListener('click', () => {
     cameraOutput.src = cameraSensor.toDataURL('images/webp');
     cameraOutput.classList.add('taken');
 });
-
-window.addEventListener('load', cameraStart, false);

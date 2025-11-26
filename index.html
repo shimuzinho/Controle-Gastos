@@ -145,7 +145,7 @@
               </div>
             </div>
 
-            <button type="button" class="btn-tirar-foto">Tirar Foto</button>
+            <button type="button" id="buttonAbrirCamera" class="btn-tirar-foto">Tirar Foto</button>
 
           </div>
 
@@ -161,6 +161,17 @@
           style="margin-top: 0; background-color: var(--cor-borda-escura);">Buscar Despesas</button>
 
       </div>
+
+      <div id="containerCamera" style="display: none; background-color: aqua; height: 100px; width: 100px;">
+        <video id="cameraView" autoplay playsinline></video>
+        <canvas id="cameraSensor"></canvas>
+        <img id="cameraOutput">
+        <div class="buttonControllers">
+          <button id="buttonTirarFoto">Tirar Foto</button>
+          <button id="buttonFecharCamera">Fechar</button>
+        </div>
+      </div>
+
     </main>
 
     <footer>
