@@ -14,13 +14,13 @@ const buttonAbrirCamera = document.getElementById('buttonAbrirCamera');
 const buttonFecharCamera = document.getElementById('buttonFecharCamera');
 const buttonTirarFoto = document.getElementById('buttonTirarFoto');
 const buttonTentarNovamente = document.getElementById('buttonTentarNovamente');
-const buttonSalvar = document.getElementById('buttonSalvar');
+const buttonTrocarCamera = document.getElementById('buttonTrocarCamera');
 const containerCamera = document.getElementById('containerCamera');
 const cameraView = document.getElementById('cameraView');
 const cameraOutput = document.getElementById('cameraOutput');
 const cameraSensor = document.getElementById('cameraSensor');
 
-let constraints = { video: { facingMode: 'user' }, audio: false };
+let constraints = { video: { facingMode: usingFrontCamera ? 'user' : 'environment' }, audio: false };
 
 const previewMode = () => {
     cameraView.style.display = 'none';
@@ -61,6 +61,10 @@ buttonTirarFoto.addEventListener('click', () => {
     localStorage.setItem('image', dataURL);
 
     alert('Foto salva!');
+});
+
+buttonTrocarCamera.addEventListener('click', async () => {
+    usingFrontCamera = !usingFrontCamera;
 });
 
 buttonTentarNovamente.addEventListener('click', () => {
