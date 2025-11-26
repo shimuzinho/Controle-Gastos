@@ -27,7 +27,6 @@ const previewMode = () => {
     buttonTirarFoto.style.display = 'none';
     cameraOutput.style.display = 'block';
     buttonTentarNovamente.style.display = 'inline-block';
-    buttonSalvar.style.display = 'inline-block';
 };
 
 const videoMode = () => {
@@ -35,7 +34,6 @@ const videoMode = () => {
     buttonTirarFoto.style.display = 'inline-block';
     cameraOutput.style.display = 'none';
     buttonTentarNovamente.style.display = 'none';
-    buttonSalvar.style.display = 'none';
 }
 
 buttonAbrirCamera.addEventListener('click', () => {
@@ -56,24 +54,24 @@ buttonTirarFoto.addEventListener('click', () => {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.heigth = cameraView.videoHeigth;
     cameraSensor.getContext('2d').drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL('images/webp');
+    const dataURL = cameraSensor.toDataURL('images/webp');
+    cameraOutput.src = dataURL;
     previewMode();
-});
-
-buttonSalvar.addEventListener('click', () => {
     const arr = dataURL.split(',');
     const mime = arr[0].match(/:(.*?);/)[1];
     const bstr = atob(arr[1]);
     let len = bstr.length;
     const u8arr = new Uint8Array(len);
-
+    
     while (len--) {
         u8arr[len] = bstr.charCodeAt(len);
     }
-
+    
     const blob = new Blob([u8arr], { type: mime });
-
+    
     localStorage.setItem('image', blob);
+
+    alert('Foto salva!');
 });
 
 buttonTentarNovamente.addEventListener('click', () => {
