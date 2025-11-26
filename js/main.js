@@ -20,12 +20,8 @@ const cameraView = document.getElementById('cameraView');
 const cameraOutput = document.getElementById('cameraOutput');
 const cameraSensor = document.getElementById('cameraSensor');
 
-<<<<<<< Updated upstream
-let constraints = { video: { facingMode: usingFrontCamera ? 'user' : 'environment' }, audio: false };
-=======
 let usingFrontCamera = true;
 let constraints = { video: { facingMode: 'user' }, audio: false };
->>>>>>> Stashed changes
 
 const previewMode = () => {
     cameraView.style.display = 'none';
