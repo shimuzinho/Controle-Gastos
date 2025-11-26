@@ -160,14 +160,17 @@
       </div>
       <div id="container-movimentacoes"></div>
 
-      <div id="containerCamera" style="display: none; background-color: aqua; height: 100px; width: 100px;">
-        <video id="cameraView" autoplay playsinline></video>
-        <canvas id="cameraSensor" style="display: none;"></canvas>
-        <img id="cameraOutput">
-        <div class="buttonControllers">
-          <button id="buttonTirarFoto">Tirar Foto</button>
-          <button id="buttonTentarNovamente">Tentar de Novo</button>
-          <button id="buttonFecharCamera">Fechar</button>
+      <div id="containerCamera" style="display: none;">
+        <div class="popup-box">
+          <video id="cameraView" autoplay playsinline></video>
+          <canvas id="cameraSensor" style="display: none;"></canvas>
+          <img id="cameraOutput" class="hidden">
+
+          <div class="buttonControllers">
+            <button id="buttonTirarFoto">Tirar Foto</button>
+            <button id="buttonTentarNovamente" style="display:none;">Tentar de Novo</button>
+            <button id="buttonFecharCamera">Fechar</button>
+          </div>
         </div>
       </div>
 
