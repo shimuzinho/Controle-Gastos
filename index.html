@@ -13,7 +13,7 @@
 <body>
   <header></header>
   <main>
-    <p>Categoria</p>
+    <h1 class="titulo">Controle de Gastos Diário</h1>
     <div class="container-categoria">
       <label class="opcao-categoria">
         <input type="radio" name="categoria" value="Comida">
@@ -110,23 +110,23 @@
         </svg>
         <p>Contas de Casa</p>
       </label>
-    </div>
-    <div>
       <div>
-        <p>Data</p>
-        <input id="data" type="date">
+        <div>
+          <p>Data</p>
+          <input id="data" type="date">
+        </div>
+        <div>
+          <p>Custo</p>
+          <input id="custo" type="number" min="0">
+        </div>
+        <div>
+          <p>Nota</p>
+          <input id="nota" type="text">
+        </div>
+        <button class="adicionarDespeza" onclick="adicionarDespeza()">Adicionar despeza</button>
       </div>
-      <div>
-        <p>Custo</p>
-        <input id="custo" type="number" min="0">
-      </div>
-      <div>
-        <p>Nota</p>
-        <input id="nota" type="text">
-      </div>
-      <button onclick="adicionarDespeza()">Adicionar despeza</button>
-    </div>
   </main>
+  </div>
   <footer></footer>
   <script type="module" src="/js/main.js" defer></script>
 </body>
