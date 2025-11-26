@@ -28,6 +28,7 @@ const previewMode = () => {
     buttonTirarFoto.style.display = 'none';
     cameraOutput.style.display = 'block';
     buttonTentarNovamente.style.display = 'inline-block';
+    buttonTrocarCamera.style.display = 'none';
 };
 
 const videoMode = () => {
@@ -35,6 +36,7 @@ const videoMode = () => {
     buttonTirarFoto.style.display = 'inline-block';
     cameraOutput.style.display = 'none';
     buttonTentarNovamente.style.display = 'none';
+    buttonTrocarCamera.style.display = 'inline-block';
 }
 
 buttonAbrirCamera.addEventListener('click', () => {
@@ -66,6 +68,20 @@ buttonTirarFoto.addEventListener('click', () => {
 
 buttonTrocarCamera.addEventListener('click', async () => {
     usingFrontCamera = !usingFrontCamera;
+
+    cameraView.srcObject.getTracks().forEach(track => track.stop());
+
+    constraints.video.facingMode = usingFrontCamera ? 'user' : 'environment';
+    
+    navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(stream => {
+            stream.getTracks();
+            cameraView.srcObject = stream;
+        })
+        .catch(err => {
+            console.error(err);
+        });
 });
 
 buttonTentarNovamente.addEventListener('click', () => {
