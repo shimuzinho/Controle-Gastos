@@ -109,7 +109,7 @@ const mostrarDespezas = async () => {
                 </svg>
             </div>
             </div>
-            <img src="${el.foto}">
+            <img class="foto" src="${el.foto}">
         `).join('');
     } else {
         document.querySelector('.container-movimentacoes').innerHTML = '';
