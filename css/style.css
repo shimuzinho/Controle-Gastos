@@ -16,10 +16,10 @@ body {
     background-color: var(--cor-fundo-branco);
     font-family: var(--fonte-corpo);
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    padding: var(--espacamento-padrao) 0;
 }
 
 main {
@@ -36,21 +36,30 @@ main {
 }
 
 .header {
+    top: 0;
     width: 100%;
-    height: auto;
+    height: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px -5px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding-bottom: 2rem;
-    filter: drop-shadow(var(--sombra-card));
+
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
 }
 
 .titulo {
     font-family: var(--fonte-titulo);
     font-weight: 600;
-    font-size: clamp(2rem, 6vw, 2.8rem);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     color: var(--cor-texto-principal);
     text-align: center;
-    margin-top: 0;
+    margin-top: 30px;
     margin-bottom: 2.5rem;
 }
 
@@ -58,7 +67,7 @@ main {
     box-sizing: border-box;
     width: 100%;
     border: 1px solid var(--cor-borda-escura);
-    border-radius: 2.5rem; 
+    border-radius: 2.5rem;
     padding: var(--espacamento-padrao);
     display: flex;
     flex-direction: column;
@@ -70,7 +79,7 @@ main {
 .categorias-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(6.25rem, 1fr));
     gap: 1.5rem;
     justify-items: center;
 }
@@ -92,14 +101,14 @@ main {
     width: auto;
     margin-bottom: 0.3rem;
     transition: color 0.2s;
-    color: var(--cor-texto-secundario); 
+    color: var(--cor-texto-secundario);
 }
 
 .opcao-categoria input {
     display: none;
 }
 
-.opcao-categoria input:checked + .icone {
+.opcao-categoria input:checked+.icone {
     color: var(--cor-primaria);
 }
 
@@ -187,6 +196,7 @@ main {
     box-shadow: none;
     border-radius: 0 var(--raio-borda-input) var(--raio-borda-input) 0;
 }
+
 .input-custo:focus {
     outline: none;
 }
@@ -206,6 +216,7 @@ main {
     transition: background-color 0.2s;
     white-space: nowrap;
 }
+
 .btn-tirar-foto:hover {
     background-color: #f0f0f0;
 }
@@ -245,6 +256,7 @@ main {
     transition: background-color 0.2s;
     margin-top: 1.25rem;
 }
+
 .btn-inserir-despesa:hover {
     background-color: #7155a8;
 }
@@ -255,26 +267,26 @@ main {
     }
 
     .card-gastos {
-        padding: 4rem 8rem; 
+        padding: 4rem 8rem;
         border-radius: var(--raio-borda-input);
     }
 
     .categorias-grid {
         gap: 3rem 6rem;
     }
-    
+
     .campos-linha-1 {
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: space-between;
-        gap: 3rem; 
+        gap: 3rem;
     }
 
     .campo-input {
-        flex: 1 1 0%; 
+        flex: 1 1 0%;
     }
-    
+
     .btn-tirar-foto {
-        width: clamp(7.5rem, 15vw, 9.375rem); 
+        width: clamp(7.5rem, 15vw, 9.375rem);
     }
 
     .input-custo {
