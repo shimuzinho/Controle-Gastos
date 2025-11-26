@@ -19,6 +19,7 @@ async function criarDB() {
                 }
             }
         });
+        await mostrarDespezas();
         console.log('Banco de dados aberto.')
     } catch (err) {
         console.log('Erro ao criar o banco de dados: ' + err.message)
@@ -59,7 +60,7 @@ const adicionarDespeza = async () => {
     nota.value = '';
 }
 
-const buscarTodasDespezas = async () => {
+const mostrarDespezas = async () => {
     if (db === undefined) {
         return;
     }
@@ -68,11 +69,20 @@ const buscarTodasDespezas = async () => {
     const store = tx.objectStore('despezas');
     const despezas = await store.getAll();
 
-    console.log(JSON.stringify(despezas));
-}
+    console.log(despezas)
+
+    if (despezas) {
+        document.getElementById('saida').innerHTML = await despezas.map(el => `
+        <tr>
+            <td>${el.categoria}(${el.nota})</td>
+            <td>${el.data}</td>
+            <td>${el.custo}</td>
+        </tr>
+        `).join('');
+    }
+};
 
 window.addEventListener('DOMContentLoaded', async event => {
     criarDB();
     document.querySelector('.adicionarDespeza').addEventListener('click', adicionarDespeza);
-    document.querySelector('.buscarDespezas').addEventListener('click', buscarTodasDespezas);
 });

@@ -28,6 +28,7 @@ const previewMode = () => {
     cameraOutput.style.display = 'block';
     buttonTentarNovamente.style.display = 'inline-block';
     buttonSalvar.style.display = 'inline-block';
+    cameraSensor.style.display = 'none';
 };
 
 const videoMode = () => {
@@ -36,6 +37,7 @@ const videoMode = () => {
     cameraOutput.style.display = 'none';
     buttonTentarNovamente.style.display = 'none';
     buttonSalvar.style.display = 'none';
+    cameraSensor.style.display = 'block';
 }
 
 buttonAbrirCamera.addEventListener('click', () => {
