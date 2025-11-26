@@ -66,6 +66,8 @@ const adicionarDespeza = async () => {
     custo.value = '';
     nota.value = '';
     localStorage.removeItem('image');
+
+    mostrarDespezas();
 }
 
 window.removerDespeza = async (id) => {
@@ -88,7 +90,7 @@ const mostrarDespezas = async () => {
 
     if (despezas.length > 0) {
 
-        document.querySelector('#container-movimentacoes').innerHTML += '<h1 class="titulo-movimentacoes">Movimentações</h1><table id="saida"></table>';
+        document.querySelector('#container-movimentacoes').innerHTML = '<h1 class="titulo-movimentacoes">Movimentações</h1><table id="saida"></table>';
 
         document.querySelector('#container-movimentacoes').classList.add('container-movimentacoes');
 
