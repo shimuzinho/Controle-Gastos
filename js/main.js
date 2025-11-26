@@ -13,25 +13,38 @@ if ('serviceWorker' in navigator) {
 const buttonAbrirCamera = document.getElementById('buttonAbrirCamera');
 const buttonFecharCamera = document.getElementById('buttonFecharCamera');
 const buttonTirarFoto = document.getElementById('buttonTirarFoto');
+const buttonTentarNovamente = document.getElementById('buttonTentarNovamente');
+const buttonSalvar = document.getElementById('buttonSalvar');
 const containerCamera = document.getElementById('containerCamera');
 const cameraView = document.getElementById('cameraView');
 const cameraOutput = document.getElementById('cameraOutput');
 const cameraSensor = document.getElementById('cameraSensor');
 
-let contrains = { video: { facingMode: 'user' }, audio: false };
+let constraints = { video: { facingMode: 'user' }, audio: false };
 
 const previewMode = () => {
     cameraView.style.display = 'none';
     buttonTirarFoto.style.display = 'none';
     cameraOutput.style.display = 'block';
+    buttonTentarNovamente.style.display = 'inline-block';
+    buttonSalvar.style.display = 'inline-block';
+};
+
+const videoMode = () => {
+    cameraView.style.display = 'block';
+    buttonTirarFoto.style.display = 'inline-block';
+    cameraOutput.style.display = 'none';
+    buttonTentarNovamente.style.display = 'none';
+    buttonSalvar.style.display = 'none';
 }
 
 buttonAbrirCamera.addEventListener('click', () => {
     containerCamera.style.display = 'flex';
+    videoMode();
     navigator.mediaDevices
-        .getUserMedia(contrains)
+        .getUserMedia(constraints)
         .then(stream => {
-            stream.getTrack[1];
+            stream.getTracks();
             cameraView.srcObject = stream;
         })
         .catch(err => {
@@ -44,17 +57,13 @@ buttonTirarFoto.addEventListener('click', () => {
     cameraSensor.heigth = cameraView.videoHeigth;
     cameraSensor.getContext('2d').drawImage(cameraView, 0, 0);
     cameraOutput.src = cameraSensor.toDataURL('images/webp');
-    cameraOutput.classList.add('taken');
-})
+    previewMode();
+});
+
+buttonTentarNovamente.addEventListener('click', () => {
+    videoMode();
+});
 
 buttonFecharCamera.addEventListener('click', () => {
     containerCamera.style.display = 'none';
-});
-
-cameraTrigger.addEventListener('click', () => {
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.heigth = cameraView.videoHeigth;
-    cameraSensor.getContext('2d').drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL('images/webp');
-    cameraOutput.classList.add('taken');
 });
